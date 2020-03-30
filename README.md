@@ -31,5 +31,5 @@ void Player_Update(void *player){
 
 
 void setup() {
-Hook(0x1018A16C8 /*Player.Update() Offset*/, Player_Update, _Player_Update);
+HOOK(0x1018A16C8 /*Player.Update() Offset*/, Player_Update, _Player_Update);
 }
