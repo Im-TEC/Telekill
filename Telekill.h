@@ -39,21 +39,21 @@ void setPosition(void *component, Vector3 newPosition){
   Transform$$set_position_Injected(transform, newPosition);
 }
 
-void *myTPlayer = NULL;
+void *myPlayer = NULL;
 
-void DoTelekill(void *TPlayer){
-  /* Here we see if the TPlayer is mine */
-  if(TPlayer::get_isMine(TPlayer)){
-    /* Set myTPlayer varible to the TPlayer sense the TPlayer is mine*/
-    myTPlayer = TPlayer;
+void DoTelekill(void *player){
+  /* Here we see if the Player is mine */
+  if(Player::get_isMine(player)){
+    /* Set myPlayer varible to the Player sense the Player is mine*/
+    myPlayer = player;
     /* End. Stopping the process*/
     return;
   }
-  /* Here we do all the checks to make sure that the TPlayer is a live and aint on my team and my TPlayer is a thing and a live */
-  if(myTPlayer && TPlayer::get_isLiving(TPlayer) && TPlayer::get_isLiving(myTPlayer) && TPlayer::get_Team(myTPlayer) != TPlayer::get_Team(TPlayer)){
-    /* Get the position of the enemy TPlayer*/
-    Vector3 ePosition = getPosition(TPlayer);
-    /* Set the my TPlayer position to the enemy TPlayer position*/
-    setPosition(myTPlayer, Vector3(ePosition.x, ePosition.y + 1, ePosition.z + 1));
+  /* Here we do all the checks to make sure that the Player is a live and aint on my team and my Player is a thing and a live */
+  if(myPlayer && Player::get_isLiving(player) && Player::get_isLiving(myPlayer) && Player::get_Team(myPlayer) != Player::get_Team(player)){
+    /* Get the position of the enemy Player*/
+    Vector3 ePosition = getPosition(player);
+    /* Set the my Player position to the enemy Player position*/
+    setPosition(myPlayer, Vector3(ePosition.x, ePosition.y + 1, ePosition.z + 1));
   }
 }
