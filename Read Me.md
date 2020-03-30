@@ -17,7 +17,7 @@
 # Example:
 
 #import "Macros.h"
-#import "Telekill.h
+#import "Telekill.h"
 
 void (*_Player_Update)(void *player);
 void Player_Update(void *player){

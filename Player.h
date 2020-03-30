@@ -8,27 +8,27 @@
 */
 
 
-class Player{
+class TPlayer{
 public:
-  static int get_Team(void *player);
+  static int get_Team(void *TPlayer);
 
-  static float get_Health(void *player);
+  static float get_Health(void *TPlayer);
 
-  static bool get_isMine(void *player);
-  static bool get_isLiving(void *player);
+  static bool get_isMine(void *TPlayer);
+  static bool get_isLiving(void *TPlayer);
 };
 
-int Player::get_Team(void *player){
-  return *(int *)((uint64_t)player + 0x210);
+int TPlayer::get_Team(void *TPlayer){
+  return *(int *)((uint64_t)TPlayer + 0x210);
 }
 
-float Player::get_Health(void *player){
-  return *(float *)((uint64_t)player + 0x1EC);
+float TPlayer::get_Health(void *TPlayer){
+  return *(float *)((uint64_t)TPlayer + 0x1EC);
 }
 
-bool Player::get_isMine(void *player){
-  return *(bool *)((uint64_t)player + 0xCC);
+bool TPlayer::get_isMine(void *TPlayer){
+  return *(bool *)((uint64_t)TPlayer + 0xCC);
 }
-bool Player::get_isLiving(void *player){
-  return Player::get_Health(player) > 1;
+bool TPlayer::get_isLiving(void *TPlayer){
+  return TPlayer::get_Health(TPlayer) > 1;
 }

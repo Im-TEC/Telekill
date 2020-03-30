@@ -24,35 +24,36 @@ Vector3 getPosition(void *component){
   /* Varible to get the position*/
   Vector3 out;
   /*get the transform of the object*/
-  void transform = Component$$get_transform(component);
+  void *transform = Component$$get_transform(component);
   /* Set the out varible to the position of the object*/
   Transform$$get_position_Injected(transform, &out);
   /* Return the verible out*/
   return out;
 }
+
 /*Here we set the position the easier way*/
-Vector3 setPosition(void *component, Vector3 newPosition){
+void setPosition(void *component, Vector3 newPosition){
   /*get the transform of the object*/
-  void transform = Component$$get_transform(component);
+  void *transform = Component$$get_transform(component);
   /* set the object position to the new position*/
   Transform$$set_position_Injected(transform, newPosition);
 }
 
-void *myPlayer = NULL;
+void *myTPlayer = NULL;
 
-void DoTelekill(void *player){
-  /* Here we see if the player is mine */
-  if(Player::get_isMine(player)){
-    /* Set myPlayer varible to the player sense the player is mine*/
-    myPlayer = player;
+void DoTelekill(void *TPlayer){
+  /* Here we see if the TPlayer is mine */
+  if(TPlayer::get_isMine(TPlayer)){
+    /* Set myTPlayer varible to the TPlayer sense the TPlayer is mine*/
+    myTPlayer = TPlayer;
     /* End. Stopping the process*/
     return;
   }
-  /* Here we do all the checks to make sure that the player is a live and aint on my team and my Player is a thing and a live */
-  if(myPlayer && Player::get_isLiving(player) && Player::get_isLiving(myPlayer) && Player::get_Team(myPlayer) != Player::get_Team(player)){
-    /* Get the position of the enemy player*/
-    Vector3 ePosition = getPosition(player);
-    /* Set the my player position to the enemy player position*/
-    setPosition(myPlayer, Vector3(ePosition.x, ePosition.y + 1, ePosition.z + 1))
+  /* Here we do all the checks to make sure that the TPlayer is a live and aint on my team and my TPlayer is a thing and a live */
+  if(myTPlayer && TPlayer::get_isLiving(TPlayer) && TPlayer::get_isLiving(myTPlayer) && TPlayer::get_Team(myTPlayer) != TPlayer::get_Team(TPlayer)){
+    /* Get the position of the enemy TPlayer*/
+    Vector3 ePosition = getPosition(TPlayer);
+    /* Set the my TPlayer position to the enemy TPlayer position*/
+    setPosition(myTPlayer, Vector3(ePosition.x, ePosition.y + 1, ePosition.z + 1));
   }
 }
