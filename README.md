@@ -12,7 +12,7 @@
 # How To Use
 1. Add All the file to the folder where the "Tweak.xm" is in
 2. Add "#import "Telekill.h" to the Tweak.xm
-3. Add The "DoTelekill(player)" into the player Update hook
+3. Add The "DoTelekill(player)" into the player update hook
 
 # Example:
 
